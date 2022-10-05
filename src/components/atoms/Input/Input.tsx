@@ -5,7 +5,7 @@ const Input = ({ formObject, register, style }: InputProps) => {
     <input
       type={formObject.keyName === 'password' ? 'password' : 'text'}
       {...register(formObject.keyName, {
-        required: '핊수 정보입니다',
+        required: '필수 정보입니다',
         pattern: {
           value: formObject.value,
           message: formObject.message,

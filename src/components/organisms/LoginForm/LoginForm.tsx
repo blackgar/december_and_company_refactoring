@@ -1,13 +1,13 @@
 import Button from '@atoms/Button/Button';
 import Title from '@atoms/Title/Title';
-import { loginInputList } from '@common/constant/logininputlist';
+import { loginInputList } from '@common/constants/logininputlist';
 import { LoginProps } from '@common/types/Login';
 import LoginInput from '@molecules/Form/LoginInput';
 import { useEffect } from 'react';
 import { useForm, FieldValues } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
-import { userInfoAtom } from './../../../atoms';
+import { userInfoAtom } from '@atom';
 
 const LoginForm = ({ login, data }: LoginProps) => {
   const navigate = useNavigate();

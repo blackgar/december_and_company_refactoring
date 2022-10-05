@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { useRecoilValue } from 'recoil';
-import { userInfoAtom } from './../atoms';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { userInfoAtom } from '@atom';
+import { useNavigate } from 'react-router-dom';
 
 interface UseMutationState<T> {
   loading: boolean;
@@ -11,7 +12,8 @@ interface UseMutationState<T> {
 type UseMutationResult<T> = [(data?: any) => void, UseMutationState<T>];
 
 function useMutation<T = any>(url: string, method?: string): UseMutationResult<T> {
-  const accessToken = useRecoilValue(userInfoAtom);
+  const navigate = useNavigate();
+  const [accessToken, setAccessToken] = useRecoilState(userInfoAtom);
   const [state, setState] = useState<UseMutationState<T>>({
     loading: true,
     data: undefined,
@@ -30,7 +32,18 @@ function useMutation<T = any>(url: string, method?: string): UseMutationResult<T
       body: JSON.stringify(data),
     })
       .then(response => response.json().catch(() => {}))
-      .then(data => setState(prev => ({ ...prev, data })))
+      .then(data => {
+        if (data === 'jwt expired') {
+          setAccessToken({
+            accessToken: '',
+            email: '',
+          });
+          alert('access_token이 만료됐습니다. 다시 로그인해주세요.');
+          navigate('/');
+          return;
+        }
+        setState(prev => ({ ...prev, data }));
+      })
       .catch(error => setState(prev => ({ ...prev, error })))
       .finally(() => setState(prev => ({ ...prev, loading: false })));
   }

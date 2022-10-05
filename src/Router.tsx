@@ -1,34 +1,46 @@
+import Sider from '@organisms/Sider/Sider';
 import AccountDetail from '@pages/AccountDetail/AccountDetail';
-import Accounts from '@pages/Accounts/Accounts';
+import AccountList from '@pages/AccountList/AccountList';
 import Login from '@pages/Login/Login';
 import UserDetail from '@pages/UserDetail/UserDetail';
-import Users from '@pages/Users/Users';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import UserList from '@pages/UserList/UserList';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
-import { userInfoAtom } from './atoms';
+import { userInfoAtom } from '@atom';
+import Header from '@organisms/Header/Header';
 
 const Router = () => {
+  const location = useLocation();
   const userInfo = useRecoilValue(userInfoAtom);
+
   return (
-    <Routes>
-      <Route path="/" element={<Login />} />
-      <Route
-        path="/accounts"
-        element={userInfo?.accessToken ? <Accounts /> : <Navigate replace to="/" />}
-      />
-      <Route
-        path="/account/:accountId"
-        element={userInfo?.accessToken ? <AccountDetail /> : <Navigate replace to="/" />}
-      />
-      <Route
-        path="/users"
-        element={userInfo?.accessToken ? <Users /> : <Navigate replace to="/" />}
-      />
-      <Route
-        path="/users/:userId"
-        element={userInfo?.accessToken ? <UserDetail /> : <Navigate replace to="/" />}
-      />
-    </Routes>
+    <div>
+      {location.pathname === '/' ? null : (
+        <div>
+          <Sider />
+          <Header path={location.pathname} />
+        </div>
+      )}
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route
+          path="/accounts"
+          element={userInfo?.accessToken ? <AccountList /> : <Navigate replace to="/" />}
+        />
+        <Route
+          path="/account/:accountId"
+          element={userInfo?.accessToken ? <AccountDetail /> : <Navigate replace to="/" />}
+        />
+        <Route
+          path="/users"
+          element={userInfo?.accessToken ? <UserList /> : <Navigate replace to="/" />}
+        />
+        <Route
+          path="/users/:userId"
+          element={userInfo?.accessToken ? <UserDetail /> : <Navigate replace to="/" />}
+        />
+      </Routes>
+    </div>
   );
 };
 

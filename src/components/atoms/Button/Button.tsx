@@ -1,6 +1,6 @@
 import { ButtonProps } from '@common/types/Button';
 
-const Button = ({ title, style, children }: ButtonProps) => {
+const Button = ({ title, style, setFunc, children }: ButtonProps) => {
   return (
     <button className={style}>
       {children}
