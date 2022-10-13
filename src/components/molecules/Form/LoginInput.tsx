@@ -1,7 +1,7 @@
 import ErrorMessage from '@atoms/ErrorMessage/ErrorMessage';
 import Input from '@atoms/Input/Input';
 import Title from '@atoms/Title/Title';
-import { loginInputStyle } from '@common/styles/input';
+import { loginInputStyle } from '@common/styles/inputstyle';
 import { FormProps } from '@common/types/Login';
 
 const LoginInput = ({ formObject, register, errors }: FormProps) => {

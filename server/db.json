@@ -4,7 +4,7 @@
       "id": 1,
       "uuid": "54477a3e-c210-4c5b-ab8c-1ed5a538707c",
       "photo": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1236.jpg",
-      "name": "하하",
+      "name": "Lionel 목",
       "email": "95@gmail.com",
       "age": 49,
       "gender_origin": 1,
@@ -1609,47 +1609,6 @@
       "email": "blackgar@naver.com",
       "password": "$2a$10$hwZMrtH.wehnVctkk7qAt.qYZI.RABsZYeYrFoPFQeYag0PydbQ12",
       "id": 102
-    },
-    {
-      "email": "955@gmail.com",
-      "password": "$2a$10$lKy8siMlHVkFxBlgiJSHUeZxcWAwo2muWuz39CVfzg7z7.4SdUjhW",
-      "id": 103,
-      "uuid": "54477a3e-c210-4c5b-ab8c-1ed5a538707c",
-      "photo": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1236.jpg",
-      "name": "하하",
-      "age": 49,
-      "gender_origin": 1,
-      "birth_date": "1979-04-28T22:12:02.238Z",
-      "phone_number": "010-2438-6150",
-      "address": "South Africa 광산군",
-      "detail_address": "2821 화곡읍 Suite 703",
-      "last_login": "2022-04-09T12:48:26.281Z",
-      "created_at": "2020-12-12T00:26:09.799Z",
-      "updated_at": "2022-05-16T19:08:20.498Z"
-    },
-    {
-      "email": "9525@gmail.com",
-      "password": "$2a$10$m1t284SjbFxRMh7HIKEKiegciaBGBrNk7w3TJi6c7wN4FpuXPsmF6",
-      "name": "하하하하",
-      "id": 104
-    },
-    {
-      "email": "95256@gmail.com",
-      "password": "$2a$10$7OxVwp/wmIUAKzA4fj/KPunyTnPmwQArcbmWAsfV0lWjkpr93c9z6",
-      "name": "하하하하",
-      "id": 105
-    },
-    {
-      "email": "952561@gmail.com",
-      "password": "$2a$10$ciE7jOafF03Rg/1IqkzR1uNosqcbYMPvCUYARK7d6klkbvCc9KgFW",
-      "name": "하하하하",
-      "id": 106
-    },
-    {
-      "email": "9525611@gmail.com",
-      "password": "$2a$10$NCgf7NJNyFWy3cQupoFiiOMQ/ZRmSSArWQNWj7oUSm9K2txsrkp.W",
-      "name": "하하하하",
-      "id": 107
     }
   ],
   "userSetting": [
@@ -7806,12 +7765,6 @@
       "is_active": true,
       "created_at": "2020-11-18T07:23:31.299Z",
       "updated_at": "2020-01-25T04:19:24.527Z"
-    },
-    {
-      "name": "하하하하",
-      "email": "9525611@gmail.com",
-      "password": "하하하하",
-      "id": 9
     }
   ]
 }
