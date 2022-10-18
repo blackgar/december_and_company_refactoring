@@ -1,7 +1,10 @@
 import { AccountsMutation } from '@common/types/List';
 import useMutation from '@hooks/useMutation';
 import { useState } from 'react';
-import ListTemplate from '../../components/template/ListTemplate/ListTemplate';
+import ListTemplate from '@template/ListTemplate/ListTemplate';
+import { accountHeaderList } from '../../common/constants/headerlist';
+import { useRecoilState } from 'recoil';
+import { accountListAtom } from '@atom';
 
 const AccountList = () => {
   const [page, setPage] = useState(1);
@@ -12,7 +15,6 @@ const AccountList = () => {
 
   return (
     <ListTemplate
-      title={'계좌'}
       getData={getAccounts}
       data={data!}
       loading={loading}
@@ -20,6 +22,7 @@ const AccountList = () => {
       setPage={setPage}
       limit={limit}
       setLimit={setLimit}
+      headerList={accountHeaderList}
     />
   );
 };

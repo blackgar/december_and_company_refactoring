@@ -1,5 +1,5 @@
 import Button from '@atoms/Button/Button';
-import Title from '@atoms/Title/Title';
+import MakeTag from '@atoms/MakeTag/MakeTag';
 import { loginInputList } from '@common/constants/logininputlist';
 import { LoginProps } from '@common/types/Login';
 import LoginInput from '@molecules/Form/LoginInput';
@@ -39,7 +39,7 @@ const LoginForm = ({ login, data }: LoginProps) => {
   return (
     <div>
       <div className="flex justify-center text-2xl mb-8 font-bold">
-        <Title title={'로그인'} />
+        <MakeTag tagName="div">로그인</MakeTag>
       </div>
       <div className="w-[25rem] border-2 border-black p-8 rounded-lg">
         <form onSubmit={handleSubmit(onValid)}>

@@ -6,6 +6,7 @@
       "@atoms/*": ["src/components/atoms/*"],
       "@molecules/*": ["src/components/molecules/*"],
       "@organisms/*": ["src/components/organisms/*"],
+      "@template/*": ["src/components/template/*"],
       "@components/*": ["src/components/*"],
       "@pages/*": ["src/pages/*"],
       "@utils/*": ["src/utils/*"],

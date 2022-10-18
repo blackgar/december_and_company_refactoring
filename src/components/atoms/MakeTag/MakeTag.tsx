@@ -8,15 +8,15 @@ import React, { SetStateAction, useEffect } from 'react';
 interface MakeTagProps {
   tagName: string;
   style?: string;
-  setState?: SetStateAction<any>;
-  value?: string;
+  handleClick?: SetStateAction<any>;
+  value?: boolean;
   children?: React.ReactNode;
 }
 
-const MakeTag = ({ tagName, style, setState, value, children }: MakeTagProps) => {
+const MakeTag = ({ tagName, style, handleClick, value, children }: MakeTagProps) => {
   return React.createElement(tagName, {
     className: style,
-    onChange: (e: any) => setState(e.target.value),
+    onClick: () => handleClick(!value),
     value,
     children,
   });

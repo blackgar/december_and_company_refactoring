@@ -34,7 +34,6 @@ export interface AccountsMutation {
 }
 
 export interface DataListProps {
-  title: string;
   getData: (data?: any) => void;
   data: AccountsMutation[] | UsersMutation[];
   loading: boolean;
@@ -42,4 +41,27 @@ export interface DataListProps {
   setPage: SetStateAction<any>;
   limit: number;
   setLimit: SetStateAction<any>;
+  headerList: string[];
+}
+
+export interface ListContentProps extends TableHeaderProps, TableBodyProps {
+  loading: boolean;
+}
+
+export interface TableHeaderProps {
+  headerList: string[];
+}
+
+export interface TableHeaderItemProps {
+  style: string;
+  name: string;
+}
+
+export interface TableBodyProps {
+  data: AccountsMutation[] | UsersMutation[];
+}
+
+export interface PaginationProps {
+  page: number;
+  setPage: SetStateAction<any>;
 }

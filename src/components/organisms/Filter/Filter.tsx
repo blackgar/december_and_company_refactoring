@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import Button from '@atoms/Button/Button';
 import Logo from '@atoms/Logo/Logo';
-import Title from '@atoms/Title/Title';
 import {
   filterCloseButtonStyle,
   filterOpenButtonStyle,
@@ -14,53 +13,81 @@ import { filterCloseButtonIcon, filterOpenButtonIcon } from '@common/constants/i
 import FilterSelect from '@molecules/FilterSelect/FilterSelect';
 import MakeTag from '@atoms/MakeTag/MakeTag';
 import { accountFilterList } from './../../../common/constants/filterlist';
+import FilterOpenButton from '@atoms/FilterOpenButton/FilterOpenButton';
+import FilterSlideButton from '@atoms/FilterOpenButton/FilterOpenButton';
+import useMutation from '@hooks/useMutation';
+import { useRecoilState } from 'recoil';
+import { accountListAtom } from '@atom';
 
 const Filter = () => {
   const outside = useRef<any>();
+  const [accounts, setAccounts] = useRecoilState(accountListAtom);
   const [open, setOpen] = useState(false);
   const [broker, setBroker] = useState('');
   const [isActive, setIsActive] = useState('');
   const [status, setStatus] = useState('');
+  const [originalData, setOriginalData] = useState([]);
+  const valueList = [broker, isActive, status];
   const setFuncList = [setBroker, setIsActive, setStatus];
+  const [filterAccounts, { data }] = useMutation<any>(
+    `/accounts?_expand=user${broker ? `&broker_id=${broker}` : ''}${
+      isActive ? `&is_active=${isActive}` : ''
+    }${status ? `&status=${status}` : ''}`
+  );
+  const filteringAccounts = () => {
+    filterAccounts();
+  };
+  const removeFilter = () => {
+    setAccounts(originalData);
+  };
   const handlerOutside = (e: any) => {
     if (!outside.current.contains(e.target)) toggleSide();
   };
   const toggleSide = () => {
     setOpen(false);
   };
+
+  useEffect(() => {
+    if (data) {
+      setAccounts(data);
+      return;
+    }
+    setOriginalData(accounts);
+  }, [data]);
+
   useEffect(() => {
     document.addEventListener('mousedown', handlerOutside);
     return () => {
       document.removeEventListener('mousedown', handlerOutside);
     };
   });
-
   return (
     <div ref={outside}>
-      <Button>
-        <div className={filterOpenButtonStyle} onClick={() => setOpen(!open)}>
-          {filterOpenButtonIcon}
-          <div className="hidden sm:block">정렬</div>
-        </div>
-      </Button>
+      <FilterOpenButton setOpen={setOpen} open={open} style={filterOpenButtonStyle}>
+        {filterOpenButtonIcon}정렬
+      </FilterOpenButton>
       <div className={`${filterSiderStyle} ${open ? 'translate-x-0' : 'translate-x-full'}`}>
-        <Button>
-          <div className={filterCloseButtonStyle} onClick={() => setOpen(!open)}>
-            {filterCloseButtonIcon}
-          </div>
-        </Button>
+        <FilterSlideButton setOpen={setOpen} open={open} style={filterCloseButtonStyle}>
+          {filterCloseButtonIcon}
+        </FilterSlideButton>
         <div className={logoStyle}>
           <Logo />
-          <Title title={'FILTER'} />
+          <MakeTag tagName="div">Filter</MakeTag>
         </div>
-        <div>
+        <div className="my-16">
           {accountFilterList.map((v, i) => (
-            <FilterSelect setFunc={setFuncList[i]} values={v} />
+            <FilterSelect key={i} setFunc={setFuncList[i]} value={valueList[i]} values={v} />
           ))}
         </div>
-        <div className="flex flex-col items-center justify-center gap-2">
-          <Button title="검색" style={filterSearchButtonStyle} />
-          <Button title="초기화" style={filterResetButtonStyle} />
+        <div className="flex flex-col items-center justify-center gap-4">
+          <MakeTag tagName="button" style={filterSearchButtonStyle} handleClick={filteringAccounts}>
+            검색
+          </MakeTag>
+          <MakeTag tagName="button" style={filterResetButtonStyle} handleClick={removeFilter}>
+            초기화
+          </MakeTag>
+          {/* <Button title="검색" style={filterSearchButtonStyle} />
+          <Button title="초기화" style={filterResetButtonStyle} /> */}
         </div>
       </div>
     </div>

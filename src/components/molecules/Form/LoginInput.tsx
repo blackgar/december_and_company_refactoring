@@ -1,6 +1,6 @@
 import ErrorMessage from '@atoms/ErrorMessage/ErrorMessage';
 import Input from '@atoms/Input/Input';
-import Title from '@atoms/Title/Title';
+import MakeTag from '@atoms/MakeTag/MakeTag';
 import { loginInputStyle } from '@common/styles/inputstyle';
 import { FormProps } from '@common/types/Login';
 
@@ -10,7 +10,9 @@ const LoginInput = ({ formObject, register, errors }: FormProps) => {
   }`;
   return (
     <div className="flex flex-col mb-4">
-      <Title title={formObject.title} style={'font-bold my-1'} />
+      <MakeTag tagName="div" style={'font-bold my-1'}>
+        {formObject.title}
+      </MakeTag>
       <Input formObject={formObject} register={register} style={loginInputStyle} errors={errors} />
       {Object.keys(errors).includes(formObject.keyName) ? (
         <ErrorMessage title={errorMessage} />

@@ -1,15 +1,29 @@
 import { SearchProps } from '@common/types/Search';
+import { accountListAtom } from '@atom';
+import { useRecoilState } from 'recoil';
+import useMutation from '@hooks/useMutation';
+import { useEffect, useState } from 'react';
+const SearchBar = () => {
+  const [accounts, setAccounts] = useRecoilState(accountListAtom);
+  const [query, setQuery] = useState('');
+  const [searchAccounts, { data }] = useMutation(`/accounts?_expand=user&q=${query}`);
+  const submitToSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    searchAccounts();
+  };
+  useEffect(() => {
+    if (data) setAccounts(data);
+  }, [data]);
 
-const SearchBar = ({ onSubmit, setFunc }: SearchProps) => {
   return (
-    <form className="relative max-w-xs" onSubmit={onSubmit}>
+    <form className="relative max-w-xs" onSubmit={submitToSearch}>
       <input
         type="text"
         name="hs-table-search"
         id="hs-table-search"
         className="block w-full p-3 pl-10 text-sm border-2 border-gray-200 rounded-lg"
         placeholder="검색"
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFunc(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setQuery(e.target.value)}
       />
       <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
         <svg
