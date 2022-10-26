@@ -1,5 +1,5 @@
 import TableHeaderItem from '@atoms/TableHeaderItem/TableHeaderItem';
-import { tableHeaderStyle } from '@common/styles/headerstyle';
+import { tableHeaderStyle } from '@common/styles/tablestyle';
 import { TableHeaderProps } from '@common/types/List';
 
 const TableHeader = ({ headerList }: TableHeaderProps) => {

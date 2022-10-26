@@ -1,4 +1,4 @@
-export const brokerList = {
+export const brokerList: any = {
   '209': '유안타증권',
   '218': '현대증권',
   '230': '미래에셋증권',
