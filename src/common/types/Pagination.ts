@@ -3,11 +3,13 @@ import { AccountsMutation, UsersMutation } from './List';
 
 export interface PaginationProps {
   page: number;
-  data: AccountsMutation[] | UsersMutation[];
+  limit: number;
   setPage: SetStateAction<any>;
+  data: AccountsMutation[] | UsersMutation[];
 }
 
 export interface PaginationPageProps {
   page: number;
+  limit: number;
   dataLength: number;
 }

@@ -71,6 +71,12 @@ export interface DataListProps {
   headerList: string[];
 }
 
+export interface ListHeaderProps {
+  limit: number;
+  setLimit: SetStateAction<any>;
+  setPage: SetStateAction<any>;
+}
+
 export interface ListContentProps extends TableHeaderProps {
   data: AccountsMutation[] | UsersMutation[];
 }

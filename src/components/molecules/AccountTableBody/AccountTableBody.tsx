@@ -3,26 +3,26 @@ import { brokerList } from '@common/constants/brokerlist';
 import { makeComma, maskingAccountNumber } from '@utils/utils';
 import { Link } from 'react-router-dom';
 import { AccountTableDataProps } from '@common/types/List';
-import { tableBodyLinkStyle, tableBodyStyle } from '@common/styles/tablestyle';
 import TableBodyItem from '@atoms/TableBodyItem/TableBodyItem';
+import { tableBodyItemLinkStyle, tableBodyItemStyle } from '../../../common/styles/tablestyle';
 
 const AccountTableBody = ({ tableData }: AccountTableDataProps) => {
   return (
     <tr>
-      <TableBodyItem style={`${tableBodyLinkStyle}`}>
+      <TableBodyItem style={`${tableBodyItemLinkStyle}`}>
         <Link to={`/users/${tableData.userId}`} state={{ user: tableData.user }}>
           {tableData.user.name}
         </Link>
       </TableBodyItem>
       <TableBodyItem name={brokerList[tableData.broker_id]} />
-      <TableBodyItem style={`${tableBodyLinkStyle}`}>
+      <TableBodyItem style={`${tableBodyItemLinkStyle}`}>
         <Link to={`/account/${tableData.id}`}>{maskingAccountNumber(tableData.number)}</Link>
       </TableBodyItem>
       <TableBodyItem name={accountsStatus[tableData.status]} />
       <TableBodyItem name={tableData.name} />
       <TableBodyItem
         name={makeComma(tableData.assets)}
-        style={`${tableBodyStyle} ${
+        style={`${tableBodyItemStyle} ${
           parseInt(tableData.assets) - parseInt(tableData.payments) > 0
             ? parseInt(tableData.assets) - parseInt(tableData.payments) === 0
               ? 'text-black'

@@ -3,6 +3,7 @@ import UserTableBody from '@molecules/UserTableBody/UserTableBody';
 import useMutation from '@hooks/useMutation';
 import { TableBodyProps } from '../../../common/types/List';
 import { useEffect } from 'react';
+import { tableBodyStyle } from '@common/styles/tablestyle';
 
 const TableBody = ({ tableData, headerList }: TableBodyProps) => {
   const [getUserSetting, { data: userSettingData, loading: userSetttingLoading }] = useMutation(
@@ -23,11 +24,13 @@ const TableBody = ({ tableData, headerList }: TableBodyProps) => {
   }, [userAccountsData]);
 
   return (
-    <tbody>
+    <tbody className={tableBodyStyle}>
       {headerList.includes('브로커명') ? (
         <AccountTableBody tableData={tableData} />
       ) : userAccountLoading || userSetttingLoading ? (
-        <div>Loading</div>
+        <tr>
+          <td>Loading...</td>
+        </tr>
       ) : (
         <UserTableBody
           tableData={tableData}

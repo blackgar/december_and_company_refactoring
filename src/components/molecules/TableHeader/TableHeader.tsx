@@ -1,13 +1,13 @@
 import TableHeaderItem from '@atoms/TableHeaderItem/TableHeaderItem';
-import { tableHeaderStyle } from '@common/styles/tablestyle';
+import { tableHeaderItemStyle, tableHeaderStyle } from '@common/styles/tablestyle';
 import { TableHeaderProps } from '@common/types/List';
 
 const TableHeader = ({ headerList }: TableHeaderProps) => {
   return (
-    <thead>
+    <thead className={tableHeaderStyle}>
       <tr>
         {headerList.map((v, i) => (
-          <TableHeaderItem key={i} style={tableHeaderStyle} name={v} />
+          <TableHeaderItem key={i} style={tableHeaderItemStyle} name={v} />
         ))}
       </tr>
     </thead>

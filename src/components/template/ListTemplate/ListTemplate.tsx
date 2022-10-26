@@ -14,20 +14,23 @@ const ListTemplate = ({
   setLimit,
   headerList,
 }: DataListProps) => {
-  // useEffect(() => {
-  //   getData();
-  // }, [page]);
-  // console.log(page, data);
+  useEffect(() => {
+    getData();
+  }, [page, limit]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [data]);
 
   return (
-    <div className="w-full bg-gray-100 h-screen p-8">
-      <ListHeader />
+    <div className="w-full bg-gray-100 min-h-screen h-[100%] p-8">
+      <ListHeader limit={limit} setLimit={setLimit} setPage={setPage} />
       {loading ? (
         <div>Loading...</div>
       ) : (
         <>
           <ListContent headerList={headerList} data={data} />
-          <Pagination page={page} setPage={setPage} data={data} />
+          <Pagination page={page} setPage={setPage} limit={limit} data={data} />
         </>
       )}
     </div>

@@ -13,8 +13,8 @@ import { filterCloseButtonIcon, filterOpenButtonIcon } from '@common/constants/i
 import FilterSelect from '@molecules/FilterSelect/FilterSelect';
 import MakeTag from '@atoms/MakeTag/MakeTag';
 import { accountFilterList } from './../../../common/constants/filterlist';
-import FilterOpenButton from '@atoms/FilterOpenButton/FilterOpenButton';
-import FilterSlideButton from '@atoms/FilterOpenButton/FilterOpenButton';
+import FilterOpenButton from '@atoms/FilterSlideButton/FilterSlideButton';
+import FilterSlideButton from '@atoms/FilterSlideButton/FilterSlideButton';
 import useMutation from '@hooks/useMutation';
 import { useRecoilState } from 'recoil';
 import { accountListAtom } from '@atom';
