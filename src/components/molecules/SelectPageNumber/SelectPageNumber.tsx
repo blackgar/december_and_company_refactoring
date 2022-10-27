@@ -1,8 +1,8 @@
 import { filterPageNumberStyle } from '@common/styles/filterstyle';
-import { ListHeaderProps } from '@common/types/List';
+import { ListHeaderSelectPageNumberProps } from '@common/types/List';
 import { useState } from 'react';
 
-const SelectPageNumber = ({ limit, setLimit, setPage }: ListHeaderProps) => {
+const SelectPageNumber = ({ limit, setLimit, setPage }: ListHeaderSelectPageNumberProps) => {
   const onSelectPageNumber = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setLimit(parseInt(e.target.value));
     setPage(1);

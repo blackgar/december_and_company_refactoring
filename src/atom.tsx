@@ -23,3 +23,15 @@ export const accountListAtom = atom({
   default: [],
   effects_UNSTABLE: [persistAtom],
 });
+
+export const userIsActiveAtom = atom({
+  key: 'userIsActive',
+  default: false,
+  effects_UNSTABLE: [persistAtom],
+});
+
+export const userIsStaffAtom = atom({
+  key: 'userIsStaff',
+  default: false,
+  effects_UNSTABLE: [persistAtom],
+});

@@ -3,12 +3,12 @@ import { ListContentProps } from '@common/types/List';
 import TableBody from '@molecules/TableBody/TableBody';
 import TableHeader from '@molecules/TableHeader/TableHeader';
 
-const ListContent = ({ headerList, data }: ListContentProps) => {
+const ListContent = ({ headerList, listData }: ListContentProps) => {
   return (
     <div className={tableListStyle}>
       <table className={tableStyle}>
         <TableHeader headerList={headerList!} />
-        {data.map((v, i) => (
+        {listData.map((v, i) => (
           <TableBody key={i} tableData={v} headerList={headerList} />
         ))}
       </table>

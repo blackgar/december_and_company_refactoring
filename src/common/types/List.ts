@@ -61,24 +61,38 @@ export interface UserSetting {
 }
 
 export interface DataListProps {
-  getData: (data?: any) => void;
-  data: AccountsMutation[] | UsersMutation[];
+  getSearchData: (data?: any) => void;
+  getFilterData?: (data?: any) => void;
+  listData: AccountsMutation[] | UsersMutation[];
   loading: boolean;
   page: number;
-  setPage: SetStateAction<any>;
   limit: number;
+  setQuery: SetStateAction<any>;
+  setPage: SetStateAction<any>;
   setLimit: SetStateAction<any>;
   headerList: string[];
+  valueList: string[] | boolean[];
+  setFuncList: SetStateAction<any>[];
 }
 
-export interface ListHeaderProps {
+export interface ListHeaderProps extends ListHeaderSelectPageNumberProps, ListHeaderSearchBarProps {
+  valueList: string[] | boolean[];
+  setFuncList: SetStateAction<any>[];
+}
+
+export interface ListHeaderSelectPageNumberProps {
   limit: number;
   setLimit: SetStateAction<any>;
   setPage: SetStateAction<any>;
+}
+
+export interface ListHeaderSearchBarProps {
+  getSearchData: (data?: any) => void;
+  setQuery: SetStateAction<any>;
 }
 
 export interface ListContentProps extends TableHeaderProps {
-  data: AccountsMutation[] | UsersMutation[];
+  listData: AccountsMutation[] | UsersMutation[];
 }
 
 export interface TableHeaderProps {

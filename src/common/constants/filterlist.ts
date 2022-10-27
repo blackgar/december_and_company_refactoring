@@ -68,4 +68,11 @@ export const accountFilterList = [
   },
 ];
 
-export const userFilterList = [];
+export const userFilterList = [
+  { label: '활성화 여부', optionName: ['활성화', '비활성화'], optionValue: ['true', 'false'] },
+  {
+    label: '임직원 계좌 여부',
+    optionName: ['임직원', '비임직원'],
+    optionValue: ['true', 'false'],
+  },
+];

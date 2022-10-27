@@ -1,5 +1,10 @@
 import { ReactNode, SetStateAction } from 'react';
 
+export interface FilterProps {
+  valueList: string[] | boolean[];
+  setFuncList: SetStateAction<any>[];
+}
+
 interface FilterOption {
   label: string;
   optionName: string[];
@@ -8,7 +13,7 @@ interface FilterOption {
 
 export interface FilterSelectProps {
   setFunc: SetStateAction<any>;
-  value: string;
+  value: any;
   values: FilterOption;
 }
 

@@ -5,7 +5,7 @@ export interface PaginationProps {
   page: number;
   limit: number;
   setPage: SetStateAction<any>;
-  data: AccountsMutation[] | UsersMutation[];
+  listData: AccountsMutation[] | UsersMutation[];
 }
 
 export interface PaginationPageProps {

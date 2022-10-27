@@ -1,20 +1,10 @@
-import { SearchProps } from '@common/types/Search';
-import { accountListAtom } from '@atom';
-import { useRecoilState } from 'recoil';
-import useMutation from '@hooks/useMutation';
-import { useEffect, useState } from 'react';
-const SearchBar = () => {
-  const [accounts, setAccounts] = useRecoilState(accountListAtom);
-  const [query, setQuery] = useState('');
-  const [searchAccounts, { data }] = useMutation(`/accounts?_expand=user&q=${query}`);
+import { ListHeaderSearchBarProps } from '@common/types/List';
+
+const SearchBar = ({ getSearchData, setQuery }: ListHeaderSearchBarProps) => {
   const submitToSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    searchAccounts();
+    getSearchData();
   };
-  useEffect(() => {
-    if (data) setAccounts(data);
-  }, [data]);
-
   return (
     <form className="relative max-w-xs" onSubmit={submitToSearch}>
       <input

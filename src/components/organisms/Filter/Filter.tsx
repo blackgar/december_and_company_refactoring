@@ -18,25 +18,15 @@ import FilterSlideButton from '@atoms/FilterSlideButton/FilterSlideButton';
 import useMutation from '@hooks/useMutation';
 import { useRecoilState } from 'recoil';
 import { accountListAtom } from '@atom';
+import { FilterProps } from '../../../common/types/Filter';
 
-const Filter = () => {
+const Filter = ({ valueList, setFuncList }: FilterProps) => {
   const outside = useRef<any>();
   const [accounts, setAccounts] = useRecoilState(accountListAtom);
+  // const [isActive, setIsActive] = useRecoilState(userIsActiveAtom);
+  // const [isStaff, setIsStaff] = useRecoilState(userIsStaffAtom);
   const [open, setOpen] = useState(false);
-  const [broker, setBroker] = useState('');
-  const [isActive, setIsActive] = useState('');
-  const [status, setStatus] = useState('');
   const [originalData, setOriginalData] = useState([]);
-  const valueList = [broker, isActive, status];
-  const setFuncList = [setBroker, setIsActive, setStatus];
-  const [filterAccounts, { data }] = useMutation<any>(
-    `/accounts?_expand=user${broker ? `&broker_id=${broker}` : ''}${
-      isActive ? `&is_active=${isActive}` : ''
-    }${status ? `&status=${status}` : ''}`
-  );
-  const filteringAccounts = () => {
-    filterAccounts();
-  };
   const removeFilter = () => {
     setAccounts(originalData);
   };
@@ -46,14 +36,6 @@ const Filter = () => {
   const toggleSide = () => {
     setOpen(false);
   };
-
-  useEffect(() => {
-    if (data) {
-      setAccounts(data);
-      return;
-    }
-    setOriginalData(accounts);
-  }, [data]);
 
   useEffect(() => {
     document.addEventListener('mousedown', handlerOutside);
@@ -80,7 +62,7 @@ const Filter = () => {
           ))}
         </div>
         <div className="flex flex-col items-center justify-center gap-4">
-          <MakeTag tagName="button" style={filterSearchButtonStyle} handleClick={filteringAccounts}>
+          <MakeTag tagName="button" style={filterSearchButtonStyle} handleClick={''}>
             검색
           </MakeTag>
           <MakeTag tagName="button" style={filterResetButtonStyle} handleClick={removeFilter}>
