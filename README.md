@@ -17,8 +17,7 @@ yarn start
 
 # December_And_Company_Refactoring 컴포넌트 설계
 
-Admin이기 때문에 아이디를 만들어놓고 npm run gen이 아니라 그냥 npm start만 해도 되게 db는 다 만들어놓고 admin 아이디를 readme에 적어놓으면 됨
-이번 프로젝트 리팩토링은 Atomic Pattern을 적용하여 atoms => molcules => organism => template 순으로 컴포넌트를 구성하여 관심사 분리를 통한 재사용성을 향상시키는 것을 목적으로 진행할 계획이다.
+이번 프로젝트 리팩토링은 Atomic Pattern을 적용하여 atoms => molcules => organism => template 순으로 컴포넌트를 구성하여 관심사 분리를 통한 재사용성을 향상시키는 것을 목적으로 진행할 계획
 
 > ## 페이지 구성
 
