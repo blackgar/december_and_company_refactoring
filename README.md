@@ -1,3 +1,4 @@
+# 프로젝트 진행 중(75% 완료)
 # 프로젝트 실행 
 ```
 git clone https://github.com/blackgar/december_and_company_refactoring.git
