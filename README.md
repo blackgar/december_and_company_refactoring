@@ -1,3 +1,18 @@
+```
+git clone https://github.com/blackgar/december_and_company_refactoring.git
+- json server 시작(json server의 _expand 속성을 활용하기 위해 server 파일 일부 수정으로 해당 폴더에서 json server 구동 필요)
+cd server
+npm install
+npm run gen
+npm start
+
+- react 프로젝트 시작
+yarn install
+yarn start
+
+- postman이나 기타 툴을 활용해서 http://localhost:4000/users/signup 으로 회원가입 진행 후 접속
+```
+
 # December_And_Company_Refactoring 컴포넌트 설계
 
 Admin이기 때문에 아이디를 만들어놓고 npm run gen이 아니라 그냥 npm start만 해도 되게 db는 다 만들어놓고 admin 아이디를 readme에 적어놓으면 됨
