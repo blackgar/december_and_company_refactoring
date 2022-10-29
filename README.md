@@ -13,6 +13,9 @@ yarn install
 yarn start
 
 - postman이나 기타 툴을 활용해서 http://localhost:4000/users/signup 으로 회원가입 진행 후 접속
+- 혹은 아래의 이메일과 비밀번호를 이용해 로그인 진행
+  email:"test@test.com"
+  password:"testtest"
 ```
 
 # December_And_Company_Refactoring 컴포넌트 설계
