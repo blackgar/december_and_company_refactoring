@@ -5,7 +5,6 @@ git clone https://github.com/blackgar/december_and_company_refactoring.git
 - json server 시작(json server의 _expand 속성을 활용하기 위해 server 파일 일부 수정으로 해당 폴더에서 json server 구동 필요)
 cd server
 npm install
-npm run gen
 npm start
 
 - react 프로젝트 시작
